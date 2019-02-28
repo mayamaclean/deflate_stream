@@ -1,0 +1,23 @@
+[package]
+name = "deflate_stream"
+version = "0.1.0"
+authors = ["maya"]
+edition = "2018"
+
+[dependencies]
+cloudflare-zlib = { git = "https://gitlab.com/mayamaclean/cloudflare-zlib-sys.git", optional = true }
+crc32fast = "*"
+crossbeam-channel = "*"
+flame = "0.2.2"
+flamer = "0.3.0"
+flate2 = { version = "*", optional = true }
+intmap = "0.4.0"
+log = "*"
+ordered_stream = { git = "https://github.com/mayamaclean/ordered_stream.git" }
+rayon = "*"
+
+[features]
+zlib = ["flate2/zlib"]
+rustz = ["flate2/rust_backend", "cloudflare-zlib"]
+miniz = ["flate2", "cloudflare-zlib"]
+cf-zlib = ["cloudflare-zlib"]
